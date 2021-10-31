@@ -7,6 +7,7 @@ export class App {
     return `
         <h1>App</h1>
         <div>${this.productList.render()}</div>
+        
     
     `;
   }
