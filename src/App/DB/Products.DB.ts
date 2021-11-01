@@ -30,7 +30,7 @@ const PRODUCTS: Product[] = [
     price: 100,
   },
   {
-    favorite: false,
+    favorite: true,
     id: 'product4',
     image: 'https://video.rozetka.com.ua/img_superportal/kompyutery_i_noutbuki/2.3.jpg',
     name: 'computer details: ',
