@@ -26,13 +26,21 @@ export class ProductsList {
   render() {
     return `
 <h2> Products list </h2>
+<div style="display:flex; flex-wrap: wrap;">
+
 ${this.products
   .map((product) => new ProductItem(product))
   .map((product) => product.render())
   .join()}
 
+</div>
+<div>
 ${this.loading ? '<p>Loading ... </p> ' : ''}
+</div>
+<div>
 ${this.error ? `<p>${this.error.message} </p> ` : ''}
+</div>
+
 <p>-------------</p>
 <div>
 <button>prev</button>
