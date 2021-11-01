@@ -20,7 +20,7 @@ export class ProductsList {
       })
       .finally(() => {
         this.loading = false;
-        appStore.$render.next(true);
+        appStore.$render.next(null);
       });
   }
   render() {

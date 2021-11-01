@@ -4,7 +4,7 @@ export class AppStore {
   static isExist = false;
   static instance: AppStore;
 
-  public $render: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  public $render = new BehaviorSubject(null);
 
   constructor() {
     if (AppStore.isExist) {
