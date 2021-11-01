@@ -35,16 +35,33 @@ ${this.products
 
 </div>
 <div>
-${this.loading ? '<p>Loading ... </p> ' : ''}
+${
+  this.loading
+    ? '<div class="d-flex justify-content-center">\n' +
+      '  <div class="spinner-border" role="status">\n' +
+      '    <span class="visually-hidden">Loading...</span>\n' +
+      '  </div>\n' +
+      '</div> '
+    : ''
+}
 </div>
+
+
 <div>
-${this.error ? `<p>${this.error.message} </p> ` : ''}
+${
+  this.error
+    ? `<div class="alert alert-danger" role="alert">
+ ${this.error.message}
+</div> `
+    : ''
+}
 </div>
 
 <p>-------------</p>
-<div>
-<button>prev</button>
-<button>next</button>
+<div class="btn-group" role="group" aria-label="Basic outlined example">
+  <button type="button" class="btn btn-outline-primary">Prev</button>
+  
+  <button type="button" class="btn btn-outline-primary">Next</button>
 </div>
 `;
   }
