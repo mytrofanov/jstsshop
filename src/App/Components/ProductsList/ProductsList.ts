@@ -9,19 +9,22 @@ export class ProductsList {
   private products: Product[] = [];
   constructor() {
     this.fetchProducts();
+    appStore.$state.subscribe(({ products }) => {
+      this.products = products;
+
+      if (products.length) {
+        this.error = null;
+        this.loading = false;
+      }
+    });
   }
   fetchProducts() {
     this.loading = true;
-    productModel
-      .getProducts()
-      .then((products) => (this.products = products))
-      .catch((error) => {
-        this.error = error;
-      })
-      .finally(() => {
-        this.loading = false;
-        appStore.$render.next(null);
-      });
+    appStore.update();
+    productModel.getProducts().catch((error) => {
+      this.error = error;
+      this.loading = false;
+    });
   }
   render() {
     return `

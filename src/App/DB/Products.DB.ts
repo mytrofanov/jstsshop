@@ -47,7 +47,7 @@ const PRODUCTS: Product[] = [
 export const getProducts = (): Promise<Product[]> => {
   return new Promise<Product[]>((resolve, reject) => {
     setTimeout(() => {
-      if (Math.random() < 0.3) {
+      if (Math.random() < 0.1) {
         reject(new Error('Smth went wrong on server'));
       } else {
         resolve(PRODUCTS);
