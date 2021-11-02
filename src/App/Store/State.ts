@@ -1,12 +1,13 @@
 import { Product } from '../Interfaces/Product';
+export interface CartProduct {
+  [key: string]: {
+    amount: number;
+    product: Product;
+  };
+}
 
 export interface Cart {
-  products: {
-    [key: string]: {
-      amount: number;
-      product: Product;
-    };
-  };
+  products: CartProduct;
 }
 export interface State {
   cart: Cart;

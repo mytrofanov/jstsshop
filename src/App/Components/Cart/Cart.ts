@@ -1,26 +1,37 @@
+import { appStore } from '../../Store/AppStore';
+import { CartProduct } from '../../Store/State';
+
 export class Cart {
+  private products: CartProduct = {};
+  private amount: number = 0;
+  private sum: number = 0;
+  constructor() {
+    appStore.$state.subscribe(({ cart }) => {
+      this.products = cart.products;
+      this.amount = Object.keys(this.products).length;
+      this.sum = Object.values(this.products).reduce((sum, item) => sum + item.product.price, 0);
+    });
+  }
   render() {
     return `
 <div>
        <ul class="list-group" style="margin-top: 1em">
-  <li class="list-group-item d-flex justify-content-between align-items-start"> Some part ($212)
+ ${Object.values(this.products)
+   .map(
+     ({ amount, product }) => `
+ <li class="list-group-item d-flex justify-content-between align-items-start"> ${product.name} ($${product.price})
    <button type="button" class="btn btn-outline"> ➕ </button>
     <button type="button" class="btn btn-outline"> ➖ </button>
-   <span class="badge bg-primary rounded-pill">14</span>
+   <span class="badge bg-primary rounded-pill">${amount}</span>
   </li>  
-   <li class="list-group-item d-flex justify-content-between align-items-start"> Some part ($212)
-   <button type="button" class="btn btn-outline"> ➕ </button>
-    <button type="button" class="btn btn-outline"> ➖ </button>
-   <span class="badge bg-primary rounded-pill">14</span>
-  </li>  
-   <li class="list-group-item d-flex justify-content-between align-items-start"> Some part ($212)
-   <button type="button" class="btn btn-outline"> ➕ </button>
-    <button type="button" class="btn btn-outline"> ➖ </button>
-   <span class="badge bg-primary rounded-pill">14</span>
-  </li>  
+ `
+   )
+   .join('')}
+ 
+    
 </ul>
 <p>
-Summary: 3 items, $1220 
+Summary: ${this.amount} items, $${this.sum} 
 </p>
 </div>
 `;
