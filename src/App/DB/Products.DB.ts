@@ -31,14 +31,14 @@ const PRODUCTS: Product[] = [
   },
   {
     favorite: true,
-    id: 'product4',
+    id: 'product5',
     image: 'https://video.rozetka.com.ua/img_superportal/kompyutery_i_noutbuki/2.3.jpg',
     name: 'computer details: ',
     price: 100,
   },
   {
     favorite: false,
-    id: 'product4',
+    id: 'product6',
     image: 'https://video.rozetka.com.ua/img_superportal/kompyutery_i_noutbuki/3.2.jpg',
     name: 'computer details: ',
     price: 100,

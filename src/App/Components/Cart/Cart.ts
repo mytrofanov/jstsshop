@@ -1,10 +1,14 @@
 import { appStore } from '../../Store/AppStore';
 import { CartProduct } from '../../Store/State';
+import { AppComponent } from '../../Interfaces/AppComponent';
 
-export class Cart {
+//MMM
+
+export class Cart implements AppComponent {
   private products: CartProduct = {};
   private amount: number = 0;
   private sum: number = 0;
+
   constructor() {
     appStore.$state.subscribe(({ cart }) => {
       this.products = cart.products;
@@ -12,6 +16,7 @@ export class Cart {
       this.sum = Object.values(this.products).reduce((sum, item) => sum + item.product.price, 0);
     });
   }
+
   render() {
     return `
 <div>
@@ -36,4 +41,7 @@ Summary: ${this.amount} items, $${this.sum}
 </div>
 `;
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  addEvents() {}
 }

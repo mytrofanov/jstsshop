@@ -12,4 +12,5 @@ root.innerHTML = app.render();
 
 appStore.$state.subscribe(() => {
   root.innerHTML = app.render();
+  app.addEvents();
 });
